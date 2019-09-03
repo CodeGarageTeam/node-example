@@ -1,0 +1,18 @@
+{
+  "name": "coderhood-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "thecave",
+  "license": "GNU v3",
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "ejs": "^2",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.19"
+  }
+}
