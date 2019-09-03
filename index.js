@@ -40,6 +40,12 @@ app.get("/chat", (req, res) => {
   });
 });
 
+app.delete("/chat", (req, res) => {
+  Item.findByIdAndRemove(req.body.id, {}, () => {
+    res.status(200).end();
+  })
+});
+
 app.get("/", (req, res) => {
     res.send("{message: 'coderhood example API'}");
 });
