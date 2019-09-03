@@ -16,24 +16,32 @@ const ItemSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  text: {
+    type: String,
+    required: true
+  }
 });
 
 Item = mongoose.model("item", ItemSchema);
-app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 //Post route
-app.post("/item", (req, res) => {
+app.post("/chat", (req, res) => {
   const newItem = new Item({
-    name: req.body.name
+    name: req.body.name,
+    text: req.body.text
   });
-
-  newItem.save().then(item => res.redirect("/item"));
+  newItem.save().then(item => res.status(201).end());
 });
 
-app.get("/item", (req, res) => {
+app.get("/chat", (req, res) => {
   Item.find({}, function(err, items) {
     res.send(items);
- });
+  });
+});
+
+app.get("/", (req, res) => {
+    res.send("{message: 'coderhood example API'}");
 });
 
 app.listen(process.env.PORT, () => console.log("Server running..."));
